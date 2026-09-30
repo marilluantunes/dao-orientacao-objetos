@@ -1,11 +1,16 @@
 // Arquivo: /pessoas/Pessoa.js
 // Classe base para PF e PJ. Fornece atributos comuns (nome, email)
-// com encapsulamento via atributos privados.
+// e também endereço e coleção de telefones.
+
+const Endereco = require('./Endereco');
+const Telefone = require('./Telefone');
 
 class Pessoa {
 
     #nome;
     #email;
+    #endereco;
+    #telefones = [];
 
     setNome(nome) {
         if (nome !== '' && nome) {
@@ -31,6 +36,32 @@ class Pessoa {
 
     getEmail() {
         return this.#email;
+    }
+
+    setEndereco(endereco) {
+        if (endereco instanceof Endereco) {
+            this.#endereco = endereco;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    getEndereco() {
+        return this.#endereco;
+    }
+
+    addTelefone(telefone) {
+        if (telefone instanceof Telefone) {
+            this.#telefones.push(telefone);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    getTelefones() {
+        return this.#telefones;
     }
 }
 

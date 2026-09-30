@@ -1,69 +1,54 @@
+// Arquivo: /pessoas/PJ.js
+// Pessoa Jurídica: herda de Pessoa, adiciona CNPJ e relacionamento 1:1 com IE.
+
 const Pessoa = require('./Pessoa');
+const IE = require('./IE/IEclss');
 
 class PJ extends Pessoa {
 
-   #cnpj;
+    #cnpj;
+    #ie;
 
-   setCNPJ(cnpj) {
+    setCNPJ(cnpj) {
+        if (cnpj) {
+            if (cnpj.length < 18) {
+                return false;
+            }
+            this.#cnpj = cnpj;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-     /*
-      Operadores de comparação:
-      <  : menor que
-      >  : maior que
-      <= : menor ou igual que
-      >= : maior ou igual que
-     */
+    getCNPJ() {
+        return this.#cnpj;
+    }
 
-     if (cnpj) {
+    setEmail(email) {
+        if (email !== '') {
+            if (email.includes('@')) {
+                super.setEmail(email);
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 
-       if (cnpj.length < 18) {
-         return false;
-       }
+    setIE(ie) {
+        if (ie instanceof IE) {
+            this.#ie = ie;
+            ie.setPJ(this);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-       this.#cnpj = cnpj;
-       return true;
+    getIE() {
+        return this.#ie;
+    }
+}
 
-     } else {
-
-       return false;
-
-     }
-
-   }
-
-   getCNPJ() {
-     return this.#cnpj;
-   }
-
-   // Sobrescrita do método setEmail()
-   setEmail(email) {
-
-     /*
-      Operadores de comparação:
-      ==  : igualdade frouxa
-      === : igualdade estrita
-      !=  : diferença frouxa
-      !== : diferença estrita
-     */
-
-     if (email !== '') {
-
-       if (email.includes('@')) {
-
-         super.setEmail(email);
-
-         return true;
-
-       }
-
-     } else {
-
-       return false;
-
-     }
-
-   }
-
- }
-
- module.exports = PJ;
+module.exports = PJ;
