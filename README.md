@@ -31,7 +31,7 @@ atividade-dao/
 └── usaAlunoDAO.mjs
 ```
 
-## 🔎 Sobre as DAOs
+## Sobre as DAOs
 
 As três DAOs (`PJDAO`, `PFDAO`, `AlunoDAO`) seguem o **mesmo padrão**:
 
@@ -44,7 +44,7 @@ As três DAOs (`PJDAO`, `PFDAO`, `AlunoDAO`) seguem o **mesmo padrão**:
   - `'pf'` para PFDAO
   - `'aluno'` para AlunoDAO
 
-## ⚙️ Como executar
+## Como executar
 
 ```bash
 node usaIE.mjs
@@ -53,8 +53,3 @@ node usaPJDAO.mjs
 node usaPFDAO.mjs
 node usaAlunoDAO.mjs
 ```
-
-## Referência
-
-Códigos baseados nas apostilas e nos exemplos discutidos em sala,
-com `PJDAO.mjs` como classe-modelo para `PFDAO.mjs` e `AlunoDAO.mjs`.
